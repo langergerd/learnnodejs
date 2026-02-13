@@ -9,7 +9,15 @@ const blogPostSchema = new Schema({
     content: {
         type: String,
         required: true
-    }
+    },
+    username: {         
+        type: String
+    },
+    datePosted: {
+        type: Date,
+        default: Date.now
+    }   
+
 })
 /* Create the BlogPost model */
     const BlogPost = mongoose.model('BlogPost', blogPostSchema)
