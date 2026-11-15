@@ -16,7 +16,8 @@ const blogPostSchema = new Schema({
     datePosted: {
         type: Date,
         default: Date.now
-    }   
+    },
+    image: String   
 
 })
 /* Create the BlogPost model */
