@@ -58,19 +58,19 @@ app.get('/post/:id', async (req, res) => {
 app.get('/create',(req,res)=>{
     res.render('create');
 })
-app.post('/posts/store',(req,res)=>{
-    // Logic to handle form submission and create a new blog post
-    BlogPost.create({
-        title: req.body.title,
-        content: req.body.body
-    }).then(() => {
+app.post('/posts/store', async (req,res)=>{
+    try {
+        await BlogPost.create({
+            title: req.body.title,
+            content: req.body.body
+        });
         console.log('Blog post created successfully', req.body);
         res.redirect('/');
-    }).catch((error) => {
+    } catch (error) {
         console.error('Error creating blog post:', error);
         res.status(500).send('Error creating blog post');
-    });
-})
+    }
+});
 
 /* Connect to MongoDB and start server after routes are defined */
 /* Server nur starten wenn DB-Connection hergestellt werden kann, Betriebssicherheit */
